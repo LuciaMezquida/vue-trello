@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="changeVisibility">Mostrar/Ocultar</button>
+
+      <tv-show-list v-if="mostrar"></tv-show-list>
+      <div v-else>No hay datos</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      Vue.component("tv-show-list", {
+        data: function () {
+          return {
+            tvshows: [
+              { name: "Game of Thrones", seasons: 7 },
+              { name: "Breaking bad", seasons: 5 },
+              { name: "Lost", seasons: 6 },
+              { name: "Battlestar Galactica", seasons: 4 },
+            ],
+          };
+        },
+        template: `
+          <ul>
+            <tv-show
+              v-for="(show, index) in tvshows"
+              :key="index"
+              :name="show.name"
+              :seasons="show.seasons"
+            ></tv-show>
+          </ul>
+        `,
+      });
+      Vue.component("tv-show", {
+        props: {
+          name: String,
+          seasons: Number,
+        },
+        template: `
+          <li>
+            <strong>{{name}}</strong>  ({{seasons}} temporadas)
+          </li>
+        `,
+      });
+      const app = new Vue({
+        el: "#app",
+        data: {
+          mostrar: false,
+        },
+        methods: {
+          changeVisibility: function () {
+            this.mostrar = !this.mostrar;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
