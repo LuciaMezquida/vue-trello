@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      Vue.component("todo-add", {
+        template: `
+          <div>
+            <input type="text" v-model="title"/>
+            <button @click="onClick">Añadir</button>
+          </div>
+        `,
+        data: function () {
+          return {
+            title: null,
+          };
+        },
+        methods: {
+          onClick: function () {
+            this.$emit("new", {
+              title: this.title,
+            });
+          },
+        },
+      });
+      Vue.component("todo-item", {
+        props: ["todo"],
+        template: `<li>{{todo.title}}</li>`,
+      });
+
+      Vue.component("todo-list", {
+        props: ["todos"],
+        template: `
+          <ul>
+            <todo-item v-for="(todo, index) in todos" :key="index" :todo="todo"></todo-item>
+          </ul>
+        `,
+      });
+
+      const app = new Vue({
+        el: "#app",
+        data: {
+          todos: [
+            { title: "Tarea 1", completed: false },
+            { title: "Tarea 2", completed: false },
+            { title: "Tarea 3", completed: false },
+          ],
+        },
+        template: `
+          <div>
+          <todo-list :todos="todos"></todo-list>
+          <todo-add @new="addNewTodo"/>
+          </div>
+        `,
+        methods: {
+          addNewTodo: function (todo) {
+            this.todos.push(todo);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
