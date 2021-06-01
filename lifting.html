@@ -8,15 +8,16 @@
   </head>
   <body>
     <div id="app"></div>
+    <template id="todo-add">
+      <div>
+        <input type="text" v-model="title" />
+        <button @click="onClick">Añadir</button>
+      </div>
+    </template>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script>
       Vue.component("todo-add", {
-        template: `
-          <div>
-            <input type="text" v-model="title"/>
-            <button @click="onClick">Añadir</button>
-          </div>
-        `,
+        template: "#todo-add",
         data: function () {
           return {
             title: null,
@@ -55,8 +56,8 @@
         },
         template: `
           <div>
-          <todo-list :todos="todos"></todo-list>
-          <todo-add @new="addNewTodo"/>
+            <todo-list :todos="todos"></todo-list>
+            <todo-add @new="addNewTodo"/>
           </div>
         `,
         methods: {
