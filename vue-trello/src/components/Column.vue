@@ -3,16 +3,28 @@
     <header>
       <h3>{{ name }}</h3>
     </header>
-    <div></div>
+    <TaskList :listId="listId" :tasks="tasksList"></TaskList>
   </section>
 </template>
 
 <script>
+import TaskList from "./TaskList";
 export default {
   name: "Column",
   props: {
     listId: Number,
     name: String,
+  },
+  components: {
+    TaskList,
+  },
+  data: () => {
+    return {
+      taskLists: [
+        { id: 1, title: "Aprender Vue", completed: false },
+        { id: 2, title: "Aprender Vuex", completed: false },
+      ],
+    };
   },
 };
 </script>
