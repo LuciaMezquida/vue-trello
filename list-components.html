@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script>
       Vue.component("tv-show-list", {
-        data: function () {
+        data: () => {
           return {
             tvshows: [
               { name: "Game of Thrones", seasons: 7 },
@@ -54,7 +54,7 @@
           mostrar: false,
         },
         methods: {
-          changeVisibility: function () {
+          changeVisibility: () => {
             this.mostrar = !this.mostrar;
           },
         },

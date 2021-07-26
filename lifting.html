@@ -18,13 +18,13 @@
     <script>
       Vue.component("todo-add", {
         template: "#todo-add",
-        data: function () {
+        data: () => {
           return {
             title: null,
           };
         },
         methods: {
-          onClick: function () {
+          onClick: () => {
             this.$emit("new", {
               title: this.title,
             });
@@ -61,7 +61,7 @@
           </div>
         `,
         methods: {
-          addNewTodo: function (todo) {
+          addNewTodo: (todo) => {
             this.todos.push(todo);
           },
         },
