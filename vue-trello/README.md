@@ -1,6 +1,6 @@
 # vue-trello
 
-> Clon de Trello para el curso de Vue.js
+> A Vue.js project
 
 ## Build Setup
 
