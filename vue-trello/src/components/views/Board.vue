@@ -8,17 +8,40 @@
         v-model="listName"
         @keyup.enter="add()"
       />
+      <div class="container">
+        <Column
+          v-for="(list, index) in boardList"
+          :key="index"
+          :listId="list.id"
+          :name="list.name"
+        ></Column>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
+import Column from "@/components/Column";
 export default {
   name: "Board",
-  components: {},
+  components: { Column },
   props: {
     name: String,
     id: Number,
+  },
+  data: () => {
+    return {
+      listName: "",
+      boardList: [
+        { id: 1, name: "ToDo" },
+        { id: 2, name: "Doing" },
+      ],
+    };
+  },
+  methods: {
+    add() {
+      this.boardList.push({ name: this.listName });
+    },
   },
 };
 </script>
