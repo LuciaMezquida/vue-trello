@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Mis paneles</h3>
+    <h3>Mis Paneles</h3>
     <div class="boards-collection">
       <input
         type="text"
