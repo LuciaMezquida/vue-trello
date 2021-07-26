@@ -27,7 +27,7 @@ export default {
   components: { Column },
   props: {
     name: String,
-    id: Number,
+    id: String,
   },
   data: () => {
     return {
