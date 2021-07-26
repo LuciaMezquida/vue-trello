@@ -12,7 +12,7 @@ import TaskList from "./TaskList";
 export default {
   name: "Column",
   props: {
-    listId: Number,
+    listId: String,
     name: String,
   },
   components: {
@@ -20,9 +20,9 @@ export default {
   },
   data: () => {
     return {
-      taskLists: [
-        { id: 1, title: "Aprender Vue", completed: false },
-        { id: 2, title: "Aprender Vuex", completed: false },
+      tasksList: [
+        { id: "1", title: "Aprender Vue", completed: false },
+        { id: "2", title: "Aprender Vuex", completed: false },
       ],
     };
   },

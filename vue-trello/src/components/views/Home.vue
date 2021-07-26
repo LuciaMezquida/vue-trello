@@ -27,8 +27,8 @@ export default {
     return {
       boardName: "",
       boards: [
-        { id: 1, name: "Tareas" },
-        { id: 2, name: "Lista de la Compra" },
+        { id: "1", name: "Tareas" },
+        { id: "2", name: "Lista de la Compra" },
       ],
     };
   },

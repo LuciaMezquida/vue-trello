@@ -8,7 +8,7 @@
 export default {
   name: "BoardName",
   props: {
-    id: Number,
+    id: String,
     name: String,
   },
 };
